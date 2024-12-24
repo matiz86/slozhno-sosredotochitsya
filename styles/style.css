@@ -166,7 +166,7 @@
   font-weight: 400;
 }
 
-.article__text-link {
+.article__text {
   color: var(--text-color);
   font-size: var(--font-size);
   line-height: 1.3;
