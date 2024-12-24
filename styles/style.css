@@ -1,5 +1,285 @@
-/* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
-
 .page {
-  /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
+  margin: 0 auto;
+  background-color: var(--bg-color);
+  font-family: var(--main-font);
+  font-size: var(--font-size);
+  color: var(--text-color);
+  line-height: 1.3;
+  background-image: var(--bg-image);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.header {
+  display: grid;
+  grid-template-rows: 1fr min-content 1fr auto;
+  align-items: center;
+  justify-items: end;
+  padding: var(--container-offset);
+}
+
+.decorated-zone {
+  height: 100vh;
+  min-height: 668px;
+  position: relative;
+}
+
+.decorated-zone::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: var(--container-offset);
+  inset-block-end: var(--container-offset);
+  inline-size: 25px;
+  block-size: 25px;
+  border-block-end: 1px solid var(--button-color);
+  border-inline-start: 1px solid var(--button-color);
+}
+
+.decorated-zone::after {
+  content: "";
+  position: absolute;
+  inset-inline-end: var(--container-offset);
+  inset-block-start: var(--container-offset);
+  inline-size: 25px;
+  block-size: 25px;
+  border-block-start: 1px solid var(--button-color);
+  border-inline-end: 1px solid var(--button-color);
+}
+
+.header__theme-menu {
+  justify-self: end;
+}
+
+.header__theme-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.header__theme-menu-button {
+  color: var(--button-color);
+  padding: 1.5px 13px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.header__theme-menu-button:hover {
+  outline: 1px solid var(--button-hover-border);
+}
+
+.header__theme-menu-button:focus {
+  outline: none;
+}
+
+.header__theme-menu-button:focus-visible {
+  border-bottom: 1px solid var(--button-color);
+}
+
+.header__theme-menu-button_active {
+  outline: 1px solid var(--button-color);
+  pointer-events: none;
+}
+
+.title {
+  color: var(--header-color);
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  line-height: 82.5%;
+  font-weight: 700;
+}
+
+.header__title {
+  text-shadow: 4px 4px 0 var(--shadow-color);
+}
+
+.header__description {
+  width: 100%;
+  justify-self: end;
+  align-self: center;
+}
+
+.header__rec {
+  position: absolute;
+  color: var(--button-color);
+  inset-block-start: var(--container-offset);
+  inset-inline-end: calc(var(--container-offset) + 3px + 25px);
+  text-transform: uppercase;
+  visibility: var(--visible);
+}
+
+.header__rec::after {
+  content: "";
+  position: absolute;
+  block-size: 5px;
+  inline-size: 5px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 4px 4px var(--button-color);
+  color: var(--button-color);
+  background-color: var(--button-color);
+  inset-inline-end: -18px;
+  inset-block-start: 9px;
+  visibility: var(--visible);
+}
+.main {
+  display: grid;
+  gap: var(--section-offset);
+  padding: var(--content-offset) var(--container-offset);
+}
+
+.section {
+  display: grid;
+  grid-auto-flow: row;
+  gap: var(--header-articles-gap);
+}
+
+.section__title {
+  color: var(--section-title-color);
+  font-size: var(--font-size);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.section__articles {
+  display: grid;
+  gap: var(--articles-gap);
+}
+
+.article {
+  display: grid;
+  gap: 10px;
+  grid-template-rows: min-content auto;
+}
+
+.header__description,
+.section__articles > .section__title,
+.article__title {
+  color: var(--article-title-color);
+  background-color: var(--article-bg-color);
+  font-size: var(--font-size);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.how .article .article__title {
+  font-weight: 400;
+}
+
+.article__text {
+  color: var(--text-color);
+  font-size: var(--font-size);
+  line-height: 1.3;
+  font-weight: var(--text-weight);
+}
+
+.article__text-link {
+  text-decoration: none;
+  text-shadow: 2px 2px var(--link-shadow-color);
+}
+
+.article__text-link:hover {
+  outline: none;
+  border-bottom: 1px solid var(--text-color);
+}
+
+.article__text-link:focus {
+  outline: none;
+}
+
+.article__text-link:focus-visible {
+  outline: 1px solid var(--text-color);
+}
+
+.article__images {
+  display: grid;
+  gap: var(--container-offset);
+}
+
+.article__images-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--container-offset);
+}
+
+.footer__title {
+  text-shadow: 2px 2px 0 var(--shadow-color);
+}
+
+@media (width >= 768px) {
+  :root {
+    --container-offset: 20px;
+    --content-offset: 60px;
+    --section-offset: 80px;
+  }
+
+  .why,
+  .how {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .what .section__title {
+    width: calc(100% / 3 - var(--articles-gap));
+  }
+
+  .images article {
+    gap: 20px;
+  }
+
+  .header__title {
+    justify-self: left;
+    margin-inline-start: calc(-1 * var(--container-offset));
+  }
+
+  .title {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+
+  .header__description {
+    width: calc(100% / 2);
+  }
+
+  .article__images-img:first-child {
+    grid-column: span 2;
+  }
+
+  .article__images-img:nth-child(2) {
+    grid-row: span 2;
+  }
+
+  .article__images-img:nth-child(3) {
+    grid-row: span 2;
+  }
+
+  .article__images-img:nth-child(5) {
+    grid-row: 3/3;
+    grid-column: 2/4;
+  }
+}
+
+@media (width >= 1024px) {
+  .what .section__articles {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .why,
+  .how {
+    grid-template-columns: calc((100% - 2 * var(--header-articles-gap)) / 3) 1fr;
+  }
+
+  .header__theme-menu {
+    justify-self: center;
+    align-self: start;
+  }
+
+  .header__theme-menu-list {
+    flex-direction: row;
+  }
 }
